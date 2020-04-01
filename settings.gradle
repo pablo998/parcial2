@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name='Letters and Numbers'
+rootProject.name='LettersAndNumbers-Ex5'
