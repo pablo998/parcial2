@@ -20,7 +20,7 @@ import es.ulpgc.eite.cleancode.lettersandnumbers.letters.LetterListActivity;
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
-public class InstrumentedTests {
+public class InstrumentedTests { // 26 tests
 
 
     @Rule
