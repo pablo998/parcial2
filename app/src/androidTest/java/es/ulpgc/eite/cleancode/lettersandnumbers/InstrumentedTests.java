@@ -10,12 +10,15 @@ import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
+import androidx.test.uiautomator.UiDevice;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import es.ulpgc.eite.cleancode.lettersandnumbers.letters.LetterListActivity;
+
+import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 
 
 @RunWith(AndroidJUnit4.class)
@@ -32,26 +35,21 @@ public class InstrumentedTests { // 18 tests
 
     public void rotateScreen() {
 
-        Context context = ApplicationProvider.getApplicationContext();
-        int orientation = context.getResources().getConfiguration().orientation;
-        Activity activity = rule.getActivity();
+        try {
 
-        if(orientation  == Configuration.ORIENTATION_PORTRAIT) {
-            activity.setRequestedOrientation(
-                ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-            );
+            UiDevice device = UiDevice.getInstance(getInstrumentation());
 
-        } else {
-            activity.setRequestedOrientation(
-                ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-            );
+            Thread.sleep(700);
+            device.setOrientationLeft();
+            Thread.sleep(700);
+            device.setOrientationNatural();
+            Thread.sleep(700);
+
+        } catch (Exception e) {
+
         }
 
-        try {
-            Thread.sleep(700);
-        } catch (InterruptedException e) { }
     }
-
 
 
     @Test
