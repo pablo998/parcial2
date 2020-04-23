@@ -16,7 +16,7 @@ public class NumberListScreen {
 
     String data = context.get().getString(R.string.app_name);
 
-    AppMediator mediator = (AppMediator) context.get().getApplication();
+    AppMediator mediator = AppMediator.getInstance();
     NumberListState state = mediator.getNumberListState();
 
     NumberListContract.Router router = new NumberListRouter(mediator);

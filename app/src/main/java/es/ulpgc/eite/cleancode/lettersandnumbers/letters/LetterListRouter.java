@@ -1,8 +1,5 @@
 package es.ulpgc.eite.cleancode.lettersandnumbers.letters;
 
-import android.content.Context;
-import android.content.Intent;
-
 import es.ulpgc.eite.cleancode.lettersandnumbers.app.AppMediator;
 import es.ulpgc.eite.cleancode.lettersandnumbers.app.LettersToNumbersState;
 import es.ulpgc.eite.cleancode.lettersandnumbers.app.NumbersToLettersState;
@@ -15,14 +12,6 @@ public class LetterListRouter implements LetterListContract.Router {
 
   public LetterListRouter(AppMediator mediator) {
     this.mediator = mediator;
-  }
-
-  @Override
-  public void navigateToNextScreen() {
-    Context context = mediator.getApplicationContext();
-    Intent intent = new Intent(context, LetterListActivity.class);
-    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-    context.startActivity(intent);
   }
 
   @Override

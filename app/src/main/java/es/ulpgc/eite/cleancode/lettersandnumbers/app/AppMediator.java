@@ -1,25 +1,36 @@
 package es.ulpgc.eite.cleancode.lettersandnumbers.app;
 
-import android.app.Application;
-
 import es.ulpgc.eite.cleancode.lettersandnumbers.letters.LetterListState;
 import es.ulpgc.eite.cleancode.lettersandnumbers.numbers.NumberListState;
 
-public class AppMediator extends Application {
+public class AppMediator {
+
+
+  private static AppMediator instance;
 
   private LetterListState letterListState;
   private NumberListState numberListState;
 
-  private NumbersToLettersState numbersToLettersState;
   private LettersToNumbersState lettersToNumbersState;
+  private NumbersToLettersState numbersToLettersState;
 
-  @Override
-  public void onCreate() {
-    super.onCreate();
-
-    numberListState = new NumberListState();
-    letterListState = new LetterListState();
+  private AppMediator() {
+    numberListState=new NumberListState();
+    letterListState=new LetterListState();
   }
+
+  public static AppMediator getInstance(){
+    if(instance==null){
+      instance= new AppMediator();
+    }
+
+    return instance;
+  }
+
+  public static void resetInstance(){
+    instance=null;
+  }
+
 
   public LetterListState getLetterListState() {
     return letterListState;

@@ -12,6 +12,8 @@ public interface LetterListContract {
     void injectPresenter(Presenter presenter);
 
     void onDataUpdated(LetterListViewModel viewModel);
+    void navigateToNextScreen();
+
   }
 
   interface Presenter {
@@ -49,7 +51,6 @@ public interface LetterListContract {
   }
 
   interface Router {
-    void navigateToNextScreen();
 
     void passStateToNextScreen(LettersToNumbersState state);
 

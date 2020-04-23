@@ -16,7 +16,7 @@ public class LetterListScreen {
 
     String data = context.get().getString(R.string.app_name);
 
-    AppMediator mediator = (AppMediator) context.get().getApplication();
+    AppMediator mediator = AppMediator.getInstance();
     LetterListState state = mediator.getLetterListState();
 
     LetterListContract.Router router = new LetterListRouter(mediator);

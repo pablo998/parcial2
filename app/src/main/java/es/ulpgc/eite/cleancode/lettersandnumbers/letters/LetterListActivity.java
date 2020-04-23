@@ -1,5 +1,6 @@
 package es.ulpgc.eite.cleancode.lettersandnumbers.letters;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
@@ -7,6 +8,7 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import es.ulpgc.eite.cleancode.lettersandnumbers.R;
+import es.ulpgc.eite.cleancode.lettersandnumbers.app.AppMediator;
 import es.ulpgc.eite.cleancode.lettersandnumbers.data.LetterData;
 
 public class LetterListActivity
@@ -21,6 +23,10 @@ public class LetterListActivity
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_letter_list);
     getSupportActionBar().setTitle(R.string.letters_title);
+
+    if (savedInstanceState == null) {
+      AppMediator.resetInstance();
+    }
 
     // do the setup
     LetterListScreen.configure(this);
@@ -83,6 +89,14 @@ public class LetterListActivity
         })
     );
   }
+
+
+  @Override
+  public void navigateToNextScreen() {
+    Intent intent = new Intent(this, LetterListActivity.class);
+    startActivity(intent);
+  }
+
 
   @Override
   public void injectPresenter(LetterListContract.Presenter presenter) {
