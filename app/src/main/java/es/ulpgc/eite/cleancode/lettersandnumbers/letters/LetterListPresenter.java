@@ -2,6 +2,8 @@ package es.ulpgc.eite.cleancode.lettersandnumbers.letters;
 
 import java.lang.ref.WeakReference;
 
+import es.ulpgc.eite.cleancode.lettersandnumbers.app.AppMediator;
+import es.ulpgc.eite.cleancode.lettersandnumbers.app.LettersToNumbersState;
 import es.ulpgc.eite.cleancode.lettersandnumbers.app.NumbersToLettersState;
 import es.ulpgc.eite.cleancode.lettersandnumbers.data.LetterData;
 
@@ -12,10 +14,11 @@ public class LetterListPresenter implements LetterListContract.Presenter {
   private WeakReference<LetterListContract.View> view;
   private LetterListState state;
   private LetterListContract.Model model;
-  private LetterListContract.Router router;
+  private AppMediator mediator;
 
-  public LetterListPresenter(LetterListState state) {
-    this.state = state;
+  public LetterListPresenter(AppMediator mediator) {
+    this.mediator = mediator;
+    state = mediator.getLetterListState();
   }
 
   @Override
@@ -52,7 +55,7 @@ public class LetterListPresenter implements LetterListContract.Presenter {
     // Log.e(TAG, "onResume()");
 
     // use passed state if is necessary
-    NumbersToLettersState savedState = router.getStateFromNextScreen();
+    NumbersToLettersState savedState = getStateFromNextScreen();
     if (savedState != null) {
 
       // update the model if is necessary
@@ -83,6 +86,25 @@ public class LetterListPresenter implements LetterListContract.Presenter {
     // Log.e(TAG, "onDestroy()");
   }
 
+
+  private void passStateToNextScreen(LettersToNumbersState state) {
+    mediator.setNextLetterListScreenState(state);
+  }
+
+  /*
+  private void passStateToPreviousScreen(LetterListState state) {
+    mediator.setPreviousLetterListScreenState(state);
+  }
+
+  private LetterListState getStateFromPreviousScreen() {
+    return mediator.getPreviousLetterListScreenState();
+  }
+  */
+
+  private NumbersToLettersState getStateFromNextScreen() {
+    return mediator.getNextLetterListScreenState();
+  }
+
   @Override
   public void onClickLetterListCell(LetterData data) {
     // Log.e(TAG, "onClickLetterListCell()");
@@ -103,8 +125,4 @@ public class LetterListPresenter implements LetterListContract.Presenter {
     this.model = model;
   }
 
-  @Override
-  public void injectRouter(LetterListContract.Router router) {
-    this.router = router;
-  }
 }

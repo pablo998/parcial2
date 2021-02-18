@@ -2,7 +2,9 @@ package es.ulpgc.eite.cleancode.lettersandnumbers.numbers;
 
 import java.lang.ref.WeakReference;
 
+import es.ulpgc.eite.cleancode.lettersandnumbers.app.AppMediator;
 import es.ulpgc.eite.cleancode.lettersandnumbers.app.LettersToNumbersState;
+import es.ulpgc.eite.cleancode.lettersandnumbers.app.NumbersToLettersState;
 import es.ulpgc.eite.cleancode.lettersandnumbers.data.NumberData;
 
 public class NumberListPresenter implements NumberListContract.Presenter {
@@ -12,11 +14,13 @@ public class NumberListPresenter implements NumberListContract.Presenter {
   private WeakReference<NumberListContract.View> view;
   private NumberListState state;
   private NumberListContract.Model model;
-  private NumberListContract.Router router;
+  private AppMediator mediator;
 
-  public NumberListPresenter(NumberListState state) {
-    this.state = state;
+  public NumberListPresenter(AppMediator mediator) {
+    this.mediator = mediator;
+    state = mediator.getNumberListState();
   }
+
 
   @Override
   public void onStart() {
@@ -28,7 +32,7 @@ public class NumberListPresenter implements NumberListContract.Presenter {
     }
 
     // use passed state if is necessary
-    LettersToNumbersState savedState = router.getStateFromPreviousScreen();
+    LettersToNumbersState savedState = getStateFromPreviousScreen();
     if (savedState != null) {
 
       // update the model if is necessary
@@ -82,6 +86,33 @@ public class NumberListPresenter implements NumberListContract.Presenter {
     // Log.e(TAG, "onDestroy()");
   }
 
+
+  /*
+  private void navigateToNextScreen() {
+    Context context = mediator.getApplicationContext();
+    Intent intent = new Intent(context, NumberListActivity.class);
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    context.startActivity(intent);
+  }
+
+  private void passStateToNextScreen(NumberListState state) {
+    mediator.setNextNumberListScreenState(state);
+  }
+
+
+  private NumberListState getStateFromNextScreen() {
+    return mediator.getNextNumberListScreenState();
+  }
+  */
+
+  private void passStateToPreviousScreen(NumbersToLettersState state) {
+    mediator.setPreviousNumberListScreenState(state);
+  }
+
+  private LettersToNumbersState getStateFromPreviousScreen() {
+    return mediator.getPreviousNumberListScreenState();
+  }
+
   @Override
   public void onClickNumberListCell(NumberData data) {
     // Log.e(TAG, "onClickNumberListCell()");
@@ -102,8 +133,4 @@ public class NumberListPresenter implements NumberListContract.Presenter {
     this.model = model;
   }
 
-  @Override
-  public void injectRouter(NumberListContract.Router router) {
-    this.router = router;
-  }
 }

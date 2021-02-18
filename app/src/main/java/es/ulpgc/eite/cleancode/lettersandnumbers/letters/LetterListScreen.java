@@ -17,13 +17,10 @@ public class LetterListScreen {
     String data = context.get().getString(R.string.app_name);
 
     AppMediator mediator = AppMediator.getInstance();
-    LetterListState state = mediator.getLetterListState();
 
-    LetterListContract.Router router = new LetterListRouter(mediator);
-    LetterListContract.Presenter presenter = new LetterListPresenter(state);
+    LetterListContract.Presenter presenter = new LetterListPresenter(mediator);
     LetterListContract.Model model = new LetterListModel(data);
     presenter.injectModel(model);
-    presenter.injectRouter(router);
     presenter.injectView(new WeakReference<>(view));
 
     view.injectPresenter(presenter);
