@@ -24,6 +24,7 @@ public class LetterListActivity
     setContentView(R.layout.activity_letter_list);
     getSupportActionBar().setTitle(R.string.letters_title);
 
+    // don't touch, necessary for testing
     if (savedInstanceState == null) {
       AppMediator.resetInstance();
     }
