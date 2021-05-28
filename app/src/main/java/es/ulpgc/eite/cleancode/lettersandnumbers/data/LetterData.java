@@ -15,7 +15,7 @@ public class LetterData implements BaseData {
   public String letter;
   //public List<NumberData> numbers;
 
-  public LetterData() {
+  public LetterData(int alphabetPosition) {
     id = generateUniqueId();
     letter = Character.toString(alphabet[alphabetPosition]);
     //numbers= new ArrayList<>();

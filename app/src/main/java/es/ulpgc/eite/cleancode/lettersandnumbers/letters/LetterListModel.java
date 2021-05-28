@@ -30,11 +30,11 @@ public class LetterListModel implements LetterListContract.Model {
     if(letras==null){
       letras = new ArrayList<>();
     }
-    LetterData letterData = new LetterData();
+    LetterData letterData = new LetterData(this.alphabetPosition);
     letras.add(letterData);
     letterData.setAlphabetPosition(alphabetPosition+1);
     this.alphabetPosition = letterData.getAlphabetPosition();
-    Log.e(TAG, "posicion es "+ letterData.getAlphabetPosition());
+    Log.e(TAG, "posicion es ahora "+ letterData.getAlphabetPosition());
     return letras;
   }
 
