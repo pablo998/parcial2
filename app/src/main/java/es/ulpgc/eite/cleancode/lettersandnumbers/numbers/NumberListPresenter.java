@@ -1,5 +1,7 @@
 package es.ulpgc.eite.cleancode.lettersandnumbers.numbers;
 
+//EXAMEN HECHO POR PABLO DE LA NUEZ MENDIZÁBAL
+
 import android.util.Log;
 
 import java.lang.ref.WeakReference;
