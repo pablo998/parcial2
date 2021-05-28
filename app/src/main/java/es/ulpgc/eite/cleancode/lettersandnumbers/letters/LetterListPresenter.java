@@ -108,11 +108,14 @@ public class LetterListPresenter implements LetterListContract.Presenter {
   @Override
   public void onClickLetterListCell(LetterData data) {
     // Log.e(TAG, "onClickLetterListCell()");
+
   }
 
   @Override
   public void onClickLetterListButton() {
     // Log.e(TAG, "onClickLetterListButton()");
+    state.datasource = model.add();
+    view.get().onDataUpdated(state);
   }
 
   @Override

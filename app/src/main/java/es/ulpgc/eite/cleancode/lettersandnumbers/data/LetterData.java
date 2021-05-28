@@ -2,19 +2,22 @@ package es.ulpgc.eite.cleancode.lettersandnumbers.data;
 
 import java.math.BigInteger;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
 public class LetterData implements BaseData {
 
-
+  public int alphabetPosition = 0;
+  public char[] alphabet = "ABCDEFGHIJKLMNOOQRSTUVWXYZ".toCharArray();
   public Long id;
   public String letter;
   //public List<NumberData> numbers;
 
   public LetterData() {
     id = generateUniqueId();
-    letter = "";
+    letter = Character.toString(alphabet[alphabetPosition]);
     //numbers= new ArrayList<>();
   }
 
@@ -22,6 +25,11 @@ public class LetterData implements BaseData {
   public String getValue() {
     return letter;
   }
+
+  public int getAlphabetPosition() {
+    return alphabetPosition;
+  }
+  public void setAlphabetPosition(int position) { this.alphabetPosition = position;}
 
 
   /**
