@@ -36,7 +36,9 @@ public interface LetterListContract {
     int getStoredData();
     void onDataFromNextScreen(int data);
 
-      List<LetterData> add();
+    void setStoredData(int data);
+
+    List<LetterData> add();
 
       void onRestartScreen(int data);
     void onDataFromPreviousScreen(int data);

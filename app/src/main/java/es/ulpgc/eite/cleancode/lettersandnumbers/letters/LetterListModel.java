@@ -26,6 +26,12 @@ public class LetterListModel implements LetterListContract.Model {
   }
 
   @Override
+  public void setStoredData(int data) {
+    // Log.e(TAG, "getStoredData()");
+    this.data = data;
+  }
+
+  @Override
   public List<LetterData> add(){
     if(letras==null){
       letras = new ArrayList<>();
@@ -49,6 +55,7 @@ public class LetterListModel implements LetterListContract.Model {
   @Override
   public void onDataFromNextScreen(int data) {
     // Log.e(TAG, "onDataFromNextScreen()");
+    this.data = data;
   }
 
   @Override

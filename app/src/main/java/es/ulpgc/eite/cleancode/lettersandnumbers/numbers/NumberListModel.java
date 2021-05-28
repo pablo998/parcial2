@@ -53,6 +53,8 @@ public class NumberListModel implements NumberListContract.Model {
   @Override
   public void onDataFromPreviousScreen(int data) {
     // Log.e(TAG, "onDataFromPreviousScreen()");
-    this.data = data;
+    if(this.data > 1) {
+      this.data = data;
+    }
   }
 }

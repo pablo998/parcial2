@@ -108,8 +108,13 @@ public class LetterListPresenter implements LetterListContract.Presenter {
   @Override
   public void onClickLetterListCell(LetterData data) {
     // Log.e(TAG, "onClickLetterListCell()");
+    if(state.contadorGlobal > 1){
+      model.setStoredData(state.contadorGlobal++);
+      state.contadorGlobal = model.getStoredData();
+      LettersToNumbersState lettersToNumbersState = new LettersToNumbersState();
+      lettersToNumbersState.data = state.contadorGlobal;
+    }
     view.get().navigateToNextScreen();
-
   }
 
   @Override
