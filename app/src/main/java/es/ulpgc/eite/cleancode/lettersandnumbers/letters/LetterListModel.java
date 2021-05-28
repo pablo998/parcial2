@@ -56,6 +56,7 @@ public class LetterListModel implements LetterListContract.Model {
   public void onDataFromNextScreen(int data) {
     // Log.e(TAG, "onDataFromNextScreen()");
     this.data = data;
+    Log.e(TAG, "Numero guardado " + this.data);
   }
 
   @Override

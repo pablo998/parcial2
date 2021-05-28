@@ -1,5 +1,7 @@
 package es.ulpgc.eite.cleancode.lettersandnumbers.numbers;
 
+import android.util.Log;
+
 import java.lang.ref.WeakReference;
 
 import es.ulpgc.eite.cleancode.lettersandnumbers.app.AppMediator;
@@ -36,6 +38,7 @@ public class NumberListPresenter implements NumberListContract.Presenter {
     if (savedState != null) {
 
       // update the model if is necessary
+      Log.e(TAG, "el numero recibido es " + savedState.data);
       model.onDataFromPreviousScreen(savedState.data);
     }
 
@@ -78,6 +81,8 @@ public class NumberListPresenter implements NumberListContract.Presenter {
     NumbersToLettersState numbersToLettersState = new NumbersToLettersState();
     numbersToLettersState.data = state.contadorGlobal;
     passStateToPreviousScreen(numbersToLettersState);
+    int numero = state.contadorGlobal;
+    Log.e(TAG, "Numeroglobar es " + numero);
   }
 
   @Override

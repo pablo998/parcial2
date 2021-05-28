@@ -1,5 +1,7 @@
 package es.ulpgc.eite.cleancode.lettersandnumbers.letters;
 
+import android.util.Log;
+
 import java.lang.ref.WeakReference;
 
 import es.ulpgc.eite.cleancode.lettersandnumbers.app.AppMediator;
@@ -65,6 +67,7 @@ public class LetterListPresenter implements LetterListContract.Presenter {
 
     // call the model and update the state
     state.contadorGlobal = model.getStoredData();
+    Log.e(TAG, "Numero guardado en state " + state.contadorGlobal);
 
     // update the view
     view.get().onDataUpdated(state);
@@ -109,10 +112,9 @@ public class LetterListPresenter implements LetterListContract.Presenter {
   public void onClickLetterListCell(LetterData data) {
     // Log.e(TAG, "onClickLetterListCell()");
     if(state.contadorGlobal > 1){
-      model.setStoredData(state.contadorGlobal++);
-      state.contadorGlobal = model.getStoredData();
       LettersToNumbersState lettersToNumbersState = new LettersToNumbersState();
       lettersToNumbersState.data = state.contadorGlobal;
+      passStateToNextScreen(lettersToNumbersState);
     }
     view.get().navigateToNextScreen();
   }
