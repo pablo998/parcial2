@@ -50,6 +50,7 @@ public class LetterListModel implements LetterListContract.Model {
   @Override
   public void onRestartScreen(int data) {
     // Log.e(TAG, "onRestartScreen()");
+    this.data = data;
   }
 
   @Override
