@@ -33,13 +33,13 @@ public interface LetterListContract {
   }
 
   interface Model {
-    String getStoredData();
-    void onDataFromNextScreen(String data);
+    int getStoredData();
+    void onDataFromNextScreen(int data);
 
       List<LetterData> add();
 
-      void onRestartScreen(String data);
-    void onDataFromPreviousScreen(String data);
+      void onRestartScreen(int data);
+    void onDataFromPreviousScreen(int data);
   }
 
 

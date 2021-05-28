@@ -8,7 +8,7 @@ import es.ulpgc.eite.cleancode.lettersandnumbers.data.NumberData;
 public class NumberListViewModel {
 
   // put the view state here
-  public String data;
+  public int contadorGlobal;
   public List<NumberData> datasource;
 
   public NumberListViewModel() {

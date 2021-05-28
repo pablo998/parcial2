@@ -11,9 +11,9 @@ public class NumberData implements BaseData {
   public Long id;
   public Integer number;
 
-  public NumberData() {
+  public NumberData(int numero) {
     id = generateUniqueId();
-    number = 0;
+    number = numero;
   }
 
   @Override

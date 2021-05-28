@@ -14,12 +14,10 @@ public class LetterListScreen {
     WeakReference<FragmentActivity> context =
         new WeakReference<>((FragmentActivity) view);
 
-    String data = context.get().getString(R.string.app_name);
-
     AppMediator mediator = AppMediator.getInstance();
 
     LetterListContract.Presenter presenter = new LetterListPresenter(mediator);
-    LetterListContract.Model model = new LetterListModel(data);
+    LetterListContract.Model model = new LetterListModel();
     presenter.injectModel(model);
     presenter.injectView(new WeakReference<>(view));
 

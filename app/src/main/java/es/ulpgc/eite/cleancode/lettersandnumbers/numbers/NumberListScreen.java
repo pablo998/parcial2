@@ -14,12 +14,11 @@ public class NumberListScreen {
     WeakReference<FragmentActivity> context =
         new WeakReference<>((FragmentActivity) view);
 
-    String data = context.get().getString(R.string.app_name);
 
     AppMediator mediator = AppMediator.getInstance();
 
     NumberListContract.Presenter presenter = new NumberListPresenter(mediator);
-    NumberListContract.Model model = new NumberListModel(data);
+    NumberListContract.Model model = new NumberListModel();
     presenter.injectModel(model);
     presenter.injectView(new WeakReference<>(view));
 

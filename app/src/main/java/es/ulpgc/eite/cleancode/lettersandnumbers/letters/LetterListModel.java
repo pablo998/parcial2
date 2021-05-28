@@ -12,15 +12,15 @@ public class LetterListModel implements LetterListContract.Model {
   public static String TAG = LetterListModel.class.getSimpleName();
 
   private List<LetterData> letras;
-  private String data;
+  private int data;
   private int alphabetPosition = 0;
 
-  public LetterListModel(String data) {
-    this.data = data;
+  public LetterListModel() {
+
   }
 
   @Override
-  public String getStoredData() {
+  public int getStoredData() {
     // Log.e(TAG, "getStoredData()");
     return data;
   }
@@ -42,17 +42,17 @@ public class LetterListModel implements LetterListContract.Model {
   }
 
   @Override
-  public void onRestartScreen(String data) {
+  public void onRestartScreen(int data) {
     // Log.e(TAG, "onRestartScreen()");
   }
 
   @Override
-  public void onDataFromNextScreen(String data) {
+  public void onDataFromNextScreen(int data) {
     // Log.e(TAG, "onDataFromNextScreen()");
   }
 
   @Override
-  public void onDataFromPreviousScreen(String data) {
+  public void onDataFromPreviousScreen(int data) {
     // Log.e(TAG, "onDataFromPreviousScreen()");
   }
 }

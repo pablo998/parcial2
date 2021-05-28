@@ -46,7 +46,7 @@ public class NumberListPresenter implements NumberListContract.Presenter {
     // Log.e(TAG, "onRestart()");
 
     // update the model if is necessary
-    model.onRestartScreen(state.data);
+    model.onRestartScreen(state.contadorGlobal);
   }
 
   @Override
@@ -64,7 +64,8 @@ public class NumberListPresenter implements NumberListContract.Presenter {
     */
 
     // call the model and update the state
-    state.data = model.getStoredData();
+    state.contadorGlobal = model.getStoredData();
+    state.datasource = model.getNumbers();
 
     // update the view
     view.get().onDataUpdated(state);
@@ -74,6 +75,9 @@ public class NumberListPresenter implements NumberListContract.Presenter {
   @Override
   public void onBackPressed() {
     // Log.e(TAG, "onBackPressed()");
+    NumbersToLettersState numbersToLettersState = new NumbersToLettersState();
+    numbersToLettersState.data = state.contadorGlobal;
+    passStateToPreviousScreen(numbersToLettersState);
   }
 
   @Override
@@ -121,6 +125,9 @@ public class NumberListPresenter implements NumberListContract.Presenter {
   @Override
   public void onClickNumberListButton() {
     // Log.e(TAG, "onClickNumberListButton()");
+    state.datasource = model.add();
+    state.contadorGlobal = model.getStoredData();
+    view.get().onDataUpdated(state);
   }
 
   @Override
