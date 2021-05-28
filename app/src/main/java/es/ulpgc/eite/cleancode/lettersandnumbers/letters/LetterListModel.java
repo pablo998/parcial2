@@ -34,6 +34,9 @@ public class LetterListModel implements LetterListContract.Model {
     letras.add(letterData);
     letterData.setAlphabetPosition(alphabetPosition+1);
     this.alphabetPosition = letterData.getAlphabetPosition();
+    if( this.alphabetPosition == letterData.getAlphabet().length ){
+      this.alphabetPosition = 0;
+    }
     Log.e(TAG, "posicion es ahora "+ letterData.getAlphabetPosition());
     return letras;
   }

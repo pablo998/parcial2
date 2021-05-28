@@ -10,7 +10,7 @@ import java.util.UUID;
 public class LetterData implements BaseData {
 
   public int alphabetPosition = 0;
-  public char[] alphabet = "ABCDEFGHIJKLMNOOQRSTUVWXYZ".toCharArray();
+  public char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
   public Long id;
   public String letter;
   //public List<NumberData> numbers;
@@ -30,6 +30,8 @@ public class LetterData implements BaseData {
     return alphabetPosition;
   }
   public void setAlphabetPosition(int position) { this.alphabetPosition = position;}
+  public char[] getAlphabet() { return this.alphabet;}
+
 
 
   /**
